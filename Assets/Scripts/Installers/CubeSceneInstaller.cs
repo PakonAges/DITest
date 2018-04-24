@@ -16,5 +16,6 @@ public class CubeSceneInstaller : MonoInstaller<CubeSceneInstaller>
         Container.Bind<ITickable>().To<CubesManager>().AsSingle();
         Container.Bind<CubesManager>().AsSingle().NonLazy();
         Container.BindFactory<Cube, Cube.Factory>().FromComponentInNewPrefab(CubePrefab).WithGameObjectName("Cube");
+        Container.BindInterfacesTo<CubesSpawner>().AsSingle();
     }
 }

@@ -5,28 +5,29 @@ using Zenject;
 public class CubesManager : ITickable {
 
     Cube.Factory _cubeFactory;
-    Settings _settings;
+    public Settings settings;
 
     public CubesManager(Cube.Factory cubeFactory, Settings settings) {
         _cubeFactory = cubeFactory;
-        _settings = settings;
+        this.settings = settings;
     }
 
     public void Tick() {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SpawnCube();
+            SpawnCube(settings.HandSpawnMaterial);
         }
     }
 
-    public void SpawnCube() {
+    public void SpawnCube(Material material) {
         var cube = _cubeFactory.Create();
         cube.Position = RandomPosition();
-        cube.Scale = RandomScale(_settings.minScale, _settings.maxScale);
+        cube.Scale = RandomScale(settings.minScale, settings.maxScale);
+        cube.CubeMaterial = material;
     }
 
     Vector3 RandomPosition() {
-        return new Vector3(RandomScale(_settings.minPosition, _settings.maxPosition),0, RandomScale(_settings.minPosition, _settings.maxPosition));
+        return new Vector3(RandomScale(settings.minPosition, settings.maxPosition),0, RandomScale(settings.minPosition, settings.maxPosition));
     }
 
     float RandomScale(float min, float max) {
@@ -36,6 +37,11 @@ public class CubesManager : ITickable {
     [Serializable]
     public class Settings {
         public GameObject CubePrefab;
+
+        public Material InititalSpawnMaterial;
+        public Material HandSpawnMaterial;
+        public Material UISpawnMaterial;
+
         public float minScale;
         public float maxScale;
         public float minPosition;

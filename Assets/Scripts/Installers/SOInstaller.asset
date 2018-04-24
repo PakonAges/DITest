@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Name: SOInstaller
   m_EditorClassIdentifier: 
   Cubes:
-    CubePrefab: {fileID: 0}
+    CubePrefab: {fileID: 1825228781795064, guid: c26bfcb87edd0494aafd4b62ecbe12e8,
+      type: 2}
+    InititalSpawnMaterial: {fileID: 2100000, guid: 6f16f80a32b0c3a46954217dcf00d419,
+      type: 2}
+    HandSpawnMaterial: {fileID: 2100000, guid: 7637884db2e1b8e439987b56fb9670cc, type: 2}
+    UISpawnMaterial: {fileID: 2100000, guid: 2af80ba177c5387419b2a6d067a75666, type: 2}
     minScale: 0.2
     maxScale: 2
     minPosition: -5

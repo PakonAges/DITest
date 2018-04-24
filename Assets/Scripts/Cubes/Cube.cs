@@ -22,6 +22,12 @@ public class Cube : MonoBehaviour {
         }
     }
 
+    public Material CubeMaterial 
+    {
+        get { return gameObject.GetComponent<Renderer>().material; }
+        set { gameObject.GetComponent<Renderer>().material = value; }
+    }
+
     public class Factory : Factory<Cube> 
     {
 
