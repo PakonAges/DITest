@@ -11,5 +11,6 @@ public class SetupInstaller : MonoInstaller<SetupInstaller>
     public void InstallManagers() {
 
         Container.Bind<SceneLoader>().AsSingle();
+        Container.Bind<Player>().AsSingle();
     }
 }

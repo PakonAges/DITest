@@ -15,6 +15,7 @@ public class CubeSceneInstaller : MonoInstaller<CubeSceneInstaller>
     public void InstallManagers() {
 
         Container.Bind<SceneLoader>().AsSingle();
+        Container.Bind<Player>().AsSingle();
     }
 
     public void InstallCubes() {
