@@ -8,8 +8,13 @@ public class CubeSceneInstaller : MonoInstaller<CubeSceneInstaller>
 
     public override void InstallBindings()
     {
+        InstallManagers();
         InstallCubes();
+    }
 
+    public void InstallManagers() {
+
+        Container.Bind<SceneLoader>().AsSingle();
     }
 
     public void InstallCubes() {
