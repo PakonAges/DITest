@@ -5,9 +5,11 @@ using Zenject;
 public class SOInstaller : ScriptableObjectInstaller<SOInstaller>
 {
     public CubesManager.Settings Cubes;
+    public CubesHolderSO CubesCollection;
 
     public override void InstallBindings()
     {
         Container.BindInstance(Cubes);
+        Container.BindInstance(CubesCollection);
     }
 }

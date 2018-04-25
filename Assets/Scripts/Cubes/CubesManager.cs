@@ -2,28 +2,76 @@
 using UnityEngine;
 using Zenject;
 
-public class CubesManager : ITickable {
+public class CubesManager : ITickable, IInitializable {
 
     Cube.Factory _cubeFactory;
     public Settings settings;
+    CubesHolderSO _cubesList;
 
-    public CubesManager(Cube.Factory cubeFactory, Settings settings) {
+    public CubesManager(Cube.Factory cubeFactory, Settings settings, CubesHolderSO cubesHolder) {
         _cubeFactory = cubeFactory;
         this.settings = settings;
+        _cubesList = cubesHolder;
+    }
+
+    public void Initialize() {
+        if (_cubesList.Cubes.Count != 0) {
+            RestoreCubes();
+        }
+    }
+
+    void RestoreCubes() {
+        foreach (var cube in _cubesList.Cubes) {
+            var newCube = _cubeFactory.Create();
+            newCube.Position = cube.Position;
+            newCube.Scale = cube.Scale;
+
+            switch (cube.Scr) {
+                case SpawnSource.Init:
+                newCube.CubeMaterial = settings.InititalSpawnMaterial;
+                break;
+                case SpawnSource.UI:
+                newCube.CubeMaterial = settings.UISpawnMaterial;
+                break;
+                case SpawnSource.Hand:
+                newCube.CubeMaterial = settings.HandSpawnMaterial;
+                break;
+                default:
+                newCube.CubeMaterial = settings.InititalSpawnMaterial;
+                break;
+            }
+        }
     }
 
     public void Tick() {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SpawnCube(settings.HandSpawnMaterial);
+            SpawnCube(SpawnSource.Hand);
         }
     }
 
-    public void SpawnCube(Material material) {
+    public void SpawnCube(SpawnSource src) {
         var cube = _cubeFactory.Create();
         cube.Position = RandomPosition();
         cube.Scale = RandomScale(settings.minScale, settings.maxScale);
-        cube.CubeMaterial = material;
+
+        switch (src) {
+            case SpawnSource.Init:
+            cube.CubeMaterial = settings.InititalSpawnMaterial;
+            break;
+            case SpawnSource.UI:
+            cube.CubeMaterial = settings.UISpawnMaterial;
+            break;
+            case SpawnSource.Hand:
+            cube.CubeMaterial = settings.HandSpawnMaterial;
+            break;
+            default:
+            cube.CubeMaterial = settings.InititalSpawnMaterial;
+            break;
+        }
+        
+
+        _cubesList.AddCube(cube.Position, cube.Scale, src);
     }
 
     Vector3 RandomPosition() {
@@ -33,6 +81,7 @@ public class CubesManager : ITickable {
     float RandomScale(float min, float max) {
         return UnityEngine.Random.Range(min, max);
     }
+
 
     [Serializable]
     public class Settings {
@@ -47,4 +96,10 @@ public class CubesManager : ITickable {
         public float minPosition;
         public float maxPosition;
     }
+}
+
+public enum SpawnSource {
+    Init,
+    UI,
+    Hand
 }

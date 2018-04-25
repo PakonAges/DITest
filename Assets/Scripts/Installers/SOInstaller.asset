@@ -22,3 +22,4 @@ MonoBehaviour:
     maxScale: 2
     minPosition: -5
     maxPosition: 5
+  CubesCollection: {fileID: 11400000, guid: 48682dafdc7b4044f97bd74389fef0b5, type: 2}

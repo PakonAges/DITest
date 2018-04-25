@@ -7,12 +7,29 @@ using Zenject;
 [Binding]
 public class SpawnerWindowViewModel : MonoBehaviour {
 
-    [Inject]
     CubesManager _spawner;
+    SceneLoader _loader;
+
+    [Inject]
+    public void Construct(CubesManager spawner, SceneLoader sceneLoader)
+    {
+        _spawner = spawner;
+        _loader = sceneLoader;
+    }
 
     [Binding]
 	public void SpawnCube() {
-        _spawner.SpawnCube(_spawner.settings.UISpawnMaterial);
+        _spawner.SpawnCube(SpawnSource.UI);
+    }
+
+    [Binding]
+    public void LoadFirstScene() {
+        _loader.LoadFirstScene();
+    }
+
+    [Binding]
+    public void LoadCubesFromSave() {
+        //To implement
     }
 
 }

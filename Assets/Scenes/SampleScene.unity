@@ -480,6 +480,24 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459ba4e8b20abfc438331b1692e8560d, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1356973335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1601914527454258, guid: 459ba4e8b20abfc438331b1692e8560d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1356973334}
+--- !u!114 &1356973336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356973335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1360956885, guid: c68824c5a233c7b49bf2740232675b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModelMethodName: SpawnerWindowViewModel.LoadCubesFromSave
+  viewEventName: UnityEngine.UI.Button.onClick
 --- !u!1 &1526980365
 GameObject:
   m_ObjectHideFlags: 0
