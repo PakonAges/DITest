@@ -1,2 +1,2 @@
-flatc -n SaveSchema.txt --gen-onefile
+flatc -n SaveSchema.fbs --gen-onefile
 @pause

@@ -1,0 +1,6 @@
+table PlayerData {
+	sessions:short;
+}
+
+root_type PlayerData;
+file_identifier "PRON";
