@@ -9,8 +9,23 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     string _sessionCounter = "";
     string _cubesToSpawn = "";
 
-    [Inject]
     SceneLoader _sceneLoader;
+    CleanUp _cleaner;
+    Player _player;
+    Saveloader _saveLoader;
+
+    [Inject]
+    public void Construct(SceneLoader loader, CleanUp cleaner, Player player, Saveloader saveloader) {
+        _sceneLoader = loader;
+        _cleaner = cleaner;
+        _player = player;
+        _saveLoader = saveloader;
+    }
+
+    void Start() {
+        //_saveLoader.LoadProfile();
+        SessionsCounter = _player.TotalSessions.ToString();
+    }
 
     [Binding]
     public string SessionsCounter {
@@ -52,5 +67,18 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     [Binding]
     public void LoadScene() {
         _sceneLoader.LoadSecondScene();
+    }
+
+    [Binding]
+    public void OnExitPressed() {
+        _cleaner.CleanCubes();
+        _saveLoader.SaveProfile();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
     }
 }

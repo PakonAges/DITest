@@ -14,11 +14,11 @@ public class SceneLoader {
 
     public void LoadFirstScene() {
         SceneManager.LoadScene(0);
-        _saver.LoadProfile();
+       // _saver.LoadProfile();
     }
 
     public void LoadSecondScene() {
         SceneManager.LoadScene(1);
-        _saver.LoadProfile();
+       //_saver.LoadProfile();
     }
 }

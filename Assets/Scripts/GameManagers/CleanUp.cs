@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class CleanUp : MonoBehaviour {
+public class CleanUp {
 
     CubesHolderSO cubesCollection;
-
-    [Inject]
-    public void Construct(CubesHolderSO cubesHolder) 
+    
+    public CleanUp(CubesHolderSO cubesHolder) 
     {
         cubesCollection = cubesHolder;
     }
 
-    private void OnApplicationQuit() {
+    public void CleanCubes() {
         cubesCollection.RemoveAllCubes();
     }
 }
