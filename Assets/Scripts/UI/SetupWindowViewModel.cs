@@ -72,7 +72,6 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     [Binding]
     public void OnExitPressed() {
         _cleaner.CleanCubes();
-        _saveLoader.SaveProfile();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -80,5 +79,25 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         Application.Quit();
 #endif
 
+    }
+
+    [Binding]
+    public void SaveProfile() {
+        _saveLoader.SaveProfile();
+    }
+
+    [Binding]
+    public void LoadProfile() {
+        _saveLoader.LoadProfile();
+    }
+
+    [Binding]
+    public void ResetProfile() {
+        _saveLoader.ResetProfile();
+    }
+
+    [Binding]
+    public void IncrementSessions() {
+        _player.TotalSessions++;
     }
 }

@@ -1,5 +1,6 @@
 table PlayerData {
 	sessions:short = 0;
+	date:string;
 }
 
 root_type PlayerData;

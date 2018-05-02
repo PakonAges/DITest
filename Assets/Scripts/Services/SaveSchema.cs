@@ -16,16 +16,21 @@ public struct PlayerData : IFlatbufferObject
   public PlayerData __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
   public short Sessions { get { int o = __p.__offset(4); return o != 0 ? __p.bb.GetShort(o + __p.bb_pos) : (short)0; } }
+  public string Date { get { int o = __p.__offset(6); return o != 0 ? __p.__string(o + __p.bb_pos) : null; } }
+  public ArraySegment<byte>? GetDateBytes() { return __p.__vector_as_arraysegment(6); }
 
   public static Offset<PlayerData> CreatePlayerData(FlatBufferBuilder builder,
-      short sessions = 0) {
-    builder.StartObject(1);
+      short sessions = 0,
+      StringOffset dateOffset = default(StringOffset)) {
+    builder.StartObject(2);
+    PlayerData.AddDate(builder, dateOffset);
     PlayerData.AddSessions(builder, sessions);
     return PlayerData.EndPlayerData(builder);
   }
 
-  public static void StartPlayerData(FlatBufferBuilder builder) { builder.StartObject(1); }
+  public static void StartPlayerData(FlatBufferBuilder builder) { builder.StartObject(2); }
   public static void AddSessions(FlatBufferBuilder builder, short sessions) { builder.AddShort(0, sessions, 0); }
+  public static void AddDate(FlatBufferBuilder builder, StringOffset dateOffset) { builder.AddOffset(1, dateOffset.Value, 0); }
   public static Offset<PlayerData> EndPlayerData(FlatBufferBuilder builder) {
     int o = builder.EndObject();
     return new Offset<PlayerData>(o);
