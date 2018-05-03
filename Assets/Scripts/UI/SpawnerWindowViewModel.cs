@@ -32,4 +32,9 @@ public class SpawnerWindowViewModel : MonoBehaviour {
         //To implement
     }
 
+    [Binding]
+    public void ClearCubes() {
+        //To implement
+    }
+
 }
