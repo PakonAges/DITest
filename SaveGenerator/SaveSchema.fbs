@@ -4,4 +4,3 @@ table PlayerData {
 }
 
 root_type PlayerData;
-file_identifier "PRON";

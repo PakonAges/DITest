@@ -42,6 +42,14 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         }
     }
 
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void OnPropertyChanged(string propertyName) {
+        if (PropertyChanged != null) {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
     [Binding]
     public string CubesToSpawn {
         get { return _cubesToSpawn; }
@@ -56,13 +64,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
 
-    private void OnPropertyChanged(string propertyName) {
-        if (PropertyChanged != null) {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
 
     [Binding]
     public void LoadScene() {
@@ -72,6 +74,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     [Binding]
     public void OnExitPressed() {
         _cleaner.CleanCubes();
+        SaveProfile();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -98,6 +101,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     [Binding]
     public void IncrementSessions() {
-        _player.TotalSessions++;
+        _player.IncrementSessionsCounter();
+        SessionsCounter = _player.TotalSessions.ToString();
     }
 }

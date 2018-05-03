@@ -11,7 +11,6 @@ public struct PlayerData : IFlatbufferObject
   public ByteBuffer ByteBuffer { get { return __p.bb; } }
   public static PlayerData GetRootAsPlayerData(ByteBuffer _bb) { return GetRootAsPlayerData(_bb, new PlayerData()); }
   public static PlayerData GetRootAsPlayerData(ByteBuffer _bb, PlayerData obj) { return (obj.__assign(_bb.GetInt(_bb.Position) + _bb.Position, _bb)); }
-  public static bool PlayerDataBufferHasIdentifier(ByteBuffer _bb) { return Table.__has_identifier(_bb, "PRON"); }
   public void __init(int _i, ByteBuffer _bb) { __p.bb_pos = _i; __p.bb = _bb; }
   public PlayerData __assign(int _i, ByteBuffer _bb) { __init(_i, _bb); return this; }
 
@@ -35,7 +34,7 @@ public struct PlayerData : IFlatbufferObject
     int o = builder.EndObject();
     return new Offset<PlayerData>(o);
   }
-  public static void FinishPlayerDataBuffer(FlatBufferBuilder builder, Offset<PlayerData> offset) { builder.Finish(offset.Value, "PRON"); }
-  public static void FinishSizePrefixedPlayerDataBuffer(FlatBufferBuilder builder, Offset<PlayerData> offset) { builder.FinishSizePrefixed(offset.Value, "PRON"); }
+  public static void FinishPlayerDataBuffer(FlatBufferBuilder builder, Offset<PlayerData> offset) { builder.Finish(offset.Value); }
+  public static void FinishSizePrefixedPlayerDataBuffer(FlatBufferBuilder builder, Offset<PlayerData> offset) { builder.FinishSizePrefixed(offset.Value); }
 };
 

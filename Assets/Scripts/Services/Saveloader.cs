@@ -11,7 +11,7 @@ public class Saveloader {
         _player = player;
         LoadProfile();
 
-        _player.TotalSessions++;
+        _player.IncrementSessionsCounter();
 
     }
 
@@ -25,8 +25,8 @@ public class Saveloader {
         PlayerData.AddSessions(builder, _player.TotalSessions);
         var playerOffset = PlayerData.EndPlayerData(builder);
 
-        builder.Finish(playerOffset.Value);
-        //PlayerData.FinishPlayerDataBuffer(builder, playerOffset);
+        //builder.Finish(playerOffset.Value);
+        PlayerData.FinishPlayerDataBuffer(builder, playerOffset);
 
         var buf = builder.DataBuffer;
 
@@ -40,14 +40,13 @@ public class Saveloader {
             SaveProfile();
         }
 
-
         if (!File.Exists("PlayerSave.pron")) throw new Exception("Load failed : 'PlayerSave.pron' not exis, something went wrong");
 
         ByteBuffer bb = new ByteBuffer(File.ReadAllBytes("PlayerSave.pron"));
 
-        if (!PlayerData.PlayerDataBufferHasIdentifier(bb)) {
-            throw new Exception("Identifier test failed, you sure the identifier is identical to the generated schema's one?");
-        }
+        //if (!PlayerData.PlayerDataBufferHasIdentifier(bb)) {
+        //    throw new Exception("Identifier test failed, you sure the identifier is identical to the generated schema's one?");
+        //}
 
         PlayerData data = PlayerData.GetRootAsPlayerData(bb);
         _player.TotalSessions = data.Sessions;
@@ -55,7 +54,13 @@ public class Saveloader {
     }
 
     public void ResetProfile() {
-        Debug.Log("Should reset Profile now");
+        if (File.Exists("PlayerSave.pron")) {
+            Debug.Log("Should reset Profile now");
+            File.Delete("PlayerSave.pron");
+        }
+        else {
+            Debug.Log("I am trying to delete non-existing save-file:(");
+        }
     }
 
 }
