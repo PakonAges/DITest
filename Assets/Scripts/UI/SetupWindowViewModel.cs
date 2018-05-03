@@ -7,7 +7,10 @@ using Zenject;
 public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     string _sessionCounter = "";
-    string _cubesToSpawn = "";
+
+    string _cubesToSpawnTxt = "";
+    int cubesAmount;
+    bool cubesCounterValid = true;
 
     SceneLoader _sceneLoader;
     CleanUp _cleaner;
@@ -23,8 +26,8 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     }
 
     void Start() {
-        //_saveLoader.LoadProfile();
         SessionsCounter = _player.TotalSessions.ToString();
+        CubesAmount = 5;
     }
 
     [Binding]
@@ -42,28 +45,55 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
 
-    public void OnPropertyChanged(string propertyName) {
-        if (PropertyChanged != null) {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    [Binding]
+    public string CubesToSpawnTxt {
+        get { return _cubesToSpawnTxt; }
+        set {
+            if (_cubesToSpawnTxt == value) {
+                return;
+            }
+            else {
+                _cubesToSpawnTxt = "Cubes Amount: " + value;
+                OnPropertyChanged("CubesToSpawnTxt");
+            }
         }
     }
 
     [Binding]
-    public string CubesToSpawn {
-        get { return _cubesToSpawn; }
+    public int CubesAmount {
+        get {
+            return cubesAmount;
+        }
+
         set {
-            if (_cubesToSpawn == value) {
+            if (cubesAmount == value) {
                 return;
             }
             else {
-                _cubesToSpawn = "Current Cubes Amount: " + value;
-                OnPropertyChanged("CubesToSpawn");
+                cubesAmount = value;
+                CubesToSpawnTxt = value.ToString();
+                OnPropertyChanged("CubesAmount");
             }
         }
     }
 
+    [Binding]
+    public bool CubesCounterValid {
+        get {
+            return cubesCounterValid;
+        }
+
+        set {
+            if (cubesCounterValid == value) {
+                return;
+            }
+
+            cubesCounterValid = value;
+            OnPropertyChanged("CubesCounterValid");
+
+        }
+    }
 
 
     [Binding]
@@ -103,5 +133,13 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     public void IncrementSessions() {
         _player.IncrementSessionsCounter();
         SessionsCounter = _player.TotalSessions.ToString();
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void OnPropertyChanged(string propertyName) {
+        if (PropertyChanged != null) {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

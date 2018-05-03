@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 224766387099534976}
   - component: {fileID: 222596768457843140}
   - component: {fileID: 114514108109781990}
+  - component: {fileID: 114464361335036188}
   m_Layer: 5
   m_Name: Sessions Counter
   m_TagString: Untagged
@@ -607,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewAdapterTypeName: 
   viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: SetupWindowViewModel.CubesToSpawn
+  viewModelPropertyName: SetupWindowViewModel.CubesToSpawnTxt
   viewPropertyName: UnityEngine.UI.Text.text
 --- !u!114 &114290688016166842
 MonoBehaviour:
@@ -715,6 +716,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewModelMethodName: SetupWindowViewModel.OnExitPressed
   viewEventName: UnityEngine.UI.Button.onClick
+--- !u!114 &114464361335036188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958030726850686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1670825535, guid: c68824c5a233c7b49bf2740232675b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: 
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: SetupWindowViewModel.SessionsCounter
+  viewPropertyName: UnityEngine.UI.Text.text
 --- !u!114 &114514108109781990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1061,12 +1077,12 @@ MonoBehaviour:
   m_Script: {fileID: -1957390036, guid: c68824c5a233c7b49bf2740232675b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewModelPropertyName: SetupWindowViewModel.CubesToSpawn
+  viewModelPropertyName: SetupWindowViewModel.CubesAmount
   viewEventName: UnityEngine.UI.InputField.onValueChanged
   viewPropertyName: UnityEngine.UI.InputField.text
-  viewAdapterTypeName: 
+  viewAdapterTypeName: UnityWeld.Binding.Adapters.IntToStringAdapter
   viewAdapterOptions: {fileID: 0}
-  viewModelAdapterTypeName: 
+  viewModelAdapterTypeName: UnityWeld.Binding.Adapters.StringToIntAdapter
   viewModelAdapterOptions: {fileID: 0}
   exceptionPropertyName: 
   exceptionAdapterTypeName: 

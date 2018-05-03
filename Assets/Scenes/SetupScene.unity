@@ -175,26 +175,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &670209020 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1958030726850686, guid: 400b9e430d810534fa2dbce0b303745d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1971950616}
---- !u!114 &670209024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670209020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1670825535, guid: c68824c5a233c7b49bf2740232675b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAdapterTypeName: 
-  viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: SetupWindowViewModel.SessionsCounter
-  viewPropertyName: UnityEngine.UI.Text.text
 --- !u!1 &1363891767
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +248,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365241952 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1016241242393656, guid: 400b9e430d810534fa2dbce0b303745d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1971950616}
+--- !u!114 &1365241958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1365241952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1670825535, guid: c68824c5a233c7b49bf2740232675b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: ColorValidationAdapter
+  viewAdapterOptions: {fileID: 11400000, guid: 730e8cc99f449b1419761c3d07661f8b, type: 2}
+  viewModelPropertyName: SetupWindowViewModel.CubesCounterValid
+  viewPropertyName: UnityEngine.UI.InputField.colors
 --- !u!1 &1591571889
 GameObject:
   m_ObjectHideFlags: 0
