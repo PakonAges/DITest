@@ -3,8 +3,7 @@ using Zenject;
 
 public class CubeSceneInstaller : MonoInstaller<CubeSceneInstaller>
 {
-
-    public GameObject CubePrefab;
+    public SOInstaller cubesInstaller;
 
     public override void InstallBindings()
     {
@@ -20,7 +19,7 @@ public class CubeSceneInstaller : MonoInstaller<CubeSceneInstaller>
 
     public void InstallCubes() {
         Container.BindInterfacesAndSelfTo<CubesManager>().AsSingle().NonLazy();
-        Container.BindFactory<Cube, Cube.Factory>().FromComponentInNewPrefab(CubePrefab).WithGameObjectName("Cube");
+        Container.BindFactory<Cube, Cube.Factory>().FromComponentInNewPrefab(cubesInstaller.Cubes.CubePrefab).WithGameObjectName("Cube");
         Container.BindInterfacesTo<CubesSpawner>().AsSingle();
     }
 }

@@ -1,14 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityWeld.Binding;
 using Zenject;
 
 [Binding]
-public class SpawnerWindowViewModel : MonoBehaviour {
+public class SpawnerWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     CubesManager _spawner;
     SceneLoader _loader;
+    string _cubesAmountTxt = "";
+
+    [Binding]
+    public string CubesAmountTxt {
+        get {
+            return _cubesAmountTxt;
+        }
+
+        set {
+            _cubesAmountTxt = "Total Cubes: " + value;
+            OnPropertyChanged("CubesAmountTxt");
+        }
+    }
+
+    void Start() {
+        CubesAmountTxt = _spawner.GetCubesAmount().ToString();
+    }
 
     [Inject]
     public void Construct(CubesManager spawner, SceneLoader sceneLoader)
@@ -34,7 +52,15 @@ public class SpawnerWindowViewModel : MonoBehaviour {
 
     [Binding]
     public void ClearCubes() {
-        //To implement
+        
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void OnPropertyChanged(string propertyName) {
+        if (PropertyChanged != null) {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
 }

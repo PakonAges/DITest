@@ -8,6 +8,11 @@ public class CubesManager : ITickable, IInitializable {
     public Settings settings;
     CubesHolderSO _cubesList;
 
+    public int CubesToSpawn {
+        get { return _cubesList.CubesToSpawn; }
+        set { _cubesList.CubesToSpawn = value; }
+    }
+
     public CubesManager(Cube.Factory cubeFactory, Settings settings, CubesHolderSO cubesHolder) {
         _cubeFactory = cubeFactory;
         this.settings = settings;
@@ -18,6 +23,15 @@ public class CubesManager : ITickable, IInitializable {
         if (_cubesList.Cubes.Count != 0) {
             RestoreCubes();
         }
+    }
+
+    public int GetCubesAmount() {
+        return _cubesList.Cubes.Count;
+    }
+
+    public void ResetAllCubes() {
+        _cubesList.RemoveAllCubes();
+        _cubesList.CubesToSpawn = 0;
     }
 
     void RestoreCubes() {

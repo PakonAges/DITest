@@ -18,7 +18,7 @@ public class Saveloader {
     public void SaveProfile() {
         var builder = new FlatBufferBuilder(1);
 
-        StringOffset saveDate = builder.CreateString("Test String ! time : " + DateTime.Now);
+        StringOffset saveDate = builder.CreateString(DateTime.Now.ToString());
 
         PlayerData.StartPlayerData(builder);
         PlayerData.AddDate(builder, saveDate);
@@ -49,7 +49,10 @@ public class Saveloader {
         //}
 
         PlayerData data = PlayerData.GetRootAsPlayerData(bb);
+
         _player.TotalSessions = data.Sessions;
+        _player.SaveDate = data.Date;
+
         Debug.Log("Loaded: " + data.Sessions + " sessions");
     }
 

@@ -7,27 +7,29 @@ using Zenject;
 public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     string _sessionCounter = "";
+    string _saveDate = "";
 
     string _cubesToSpawnTxt = "";
     int cubesAmount;
     bool cubesCounterValid = true;
 
     SceneLoader _sceneLoader;
-    CleanUp _cleaner;
     Player _player;
     Saveloader _saveLoader;
+    CubesManager _cubesManager;
 
     [Inject]
-    public void Construct(SceneLoader loader, CleanUp cleaner, Player player, Saveloader saveloader) {
+    public void Construct(SceneLoader loader, Player player, Saveloader saveloader, CubesManager cubesManager) {
         _sceneLoader = loader;
-        _cleaner = cleaner;
         _player = player;
         _saveLoader = saveloader;
+        _cubesManager = cubesManager;
     }
 
     void Start() {
         SessionsCounter = _player.TotalSessions.ToString();
-        CubesAmount = 5;
+        SaveDate = _player.SaveDate;
+        CubesAmount = _cubesManager.CubesToSpawn;
     }
 
     [Binding]
@@ -72,6 +74,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
             }
             else {
                 cubesAmount = value;
+                _cubesManager.CubesToSpawn = value;
                 CubesToSpawnTxt = value.ToString();
                 OnPropertyChanged("CubesAmount");
             }
@@ -95,6 +98,17 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         }
     }
 
+    [Binding]
+    public string SaveDate {
+        get {
+            return _saveDate;
+        }
+
+        set {
+            _saveDate = value;
+            OnPropertyChanged("SaveDate");
+        }
+    }
 
     [Binding]
     public void LoadScene() {
@@ -103,15 +117,8 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     [Binding]
     public void OnExitPressed() {
-        _cleaner.CleanCubes();
         SaveProfile();
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-
+        AppStop();
     }
 
     [Binding]
@@ -127,6 +134,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     [Binding]
     public void ResetProfile() {
         _saveLoader.ResetProfile();
+        AppStop();
     }
 
     [Binding]
@@ -141,5 +149,13 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         if (PropertyChanged != null) {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+    }
+
+    void AppStop() {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

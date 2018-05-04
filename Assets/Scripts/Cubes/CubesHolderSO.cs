@@ -7,6 +7,7 @@ using UnityEngine;
 public class CubesHolderSO : ScriptableObject {
 
     public List<CubeData> Cubes;
+    public int CubesToSpawn;
 
     public void AddCube(Vector3 pos, float scale, SpawnSource src) {
         var newCube = new CubeData(pos, scale, src);

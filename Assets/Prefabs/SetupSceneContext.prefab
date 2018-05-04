@@ -55,7 +55,8 @@ MonoBehaviour:
   _installers:
   - {fileID: 114968342002022498}
   _installerPrefabs: []
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 3bd22b774c638af4c99ef35c2ebbeb01, type: 2}
   _autoRun: 1
   _parentNewObjectsUnderRoot: 0
   _contractNames: []
@@ -72,3 +73,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79452919296ae2741a689cf86ee1ae9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubesInstaller: {fileID: 11400000, guid: 3bd22b774c638af4c99ef35c2ebbeb01, type: 2}

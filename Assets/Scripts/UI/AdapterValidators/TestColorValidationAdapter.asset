@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Name: TestColorValidationAdapter
   m_EditorClassIdentifier: 
   NormalColor:
-    m_NormalColor: {r: 0.39288896, g: 0.764151, b: 0.60722846, a: 0}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
-    m_ColorMultiplier: 0
-    m_FadeDuration: 0
+    m_NormalColor: {r: 0.39288896, g: 0.764151, b: 0.60722846, a: 1}
+    m_HighlightedColor: {r: 0.39215687, g: 0.7647059, b: 0.60784316, a: 1}
+    m_PressedColor: {r: 0.39215687, g: 0.7647059, b: 0.60784316, a: 1}
+    m_DisabledColor: {r: 0.39215687, g: 0.7647059, b: 0.60784316, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.2
   InvalidColor:
-    m_NormalColor: {r: 0.735849, g: 0.15505774, b: 0.1492524, a: 0}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 0}
-    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0}
-    m_ColorMultiplier: 0
-    m_FadeDuration: 0
+    m_NormalColor: {r: 0.735849, g: 0.15505774, b: 0.1492524, a: 1}
+    m_HighlightedColor: {r: 0.7372549, g: 0.15686275, b: 0.14901961, a: 1}
+    m_PressedColor: {r: 0.7372549, g: 0.15686275, b: 0.14901961, a: 1}
+    m_DisabledColor: {r: 0.7372549, g: 0.15686275, b: 0.14901961, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.2
