@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -12,84 +12,40 @@ MonoBehaviour:
   m_Name: CubesCollection
   m_EditorClassIdentifier: 
   Cubes:
-  - Position: {x: -3.851421, y: 0, z: -3.4065104}
-    Scale: 0.41009617
-    Material: {fileID: 0}
-  - Position: {x: 1.0911913, y: 0, z: -0.77566814}
-    Scale: 0.9052816
-    Material: {fileID: 0}
-  - Position: {x: -1.3539453, y: 0, z: 2.2485409}
-    Scale: 1.2707002
-    Material: {fileID: 0}
-  - Position: {x: 3.5229254, y: 0, z: 0.22681999}
-    Scale: 0.48162013
-    Material: {fileID: 0}
-  - Position: {x: -0.163198, y: 0, z: -0.7056813}
-    Scale: 0.8962876
-    Material: {fileID: 0}
-  - Position: {x: -3.6439838, y: 0, z: 1.4141595}
-    Scale: 1.7484732
-    Material: {fileID: 0}
-  - Position: {x: -1.0850315, y: 0, z: -3.8537333}
-    Scale: 1.2195286
-    Material: {fileID: 0}
-  - Position: {x: 0.29800367, y: 0, z: -4.287142}
-    Scale: 1.6679919
-    Material: {fileID: 0}
-  - Position: {x: -0.1818757, y: 0, z: 1.2328725}
-    Scale: 1.1221848
-    Material: {fileID: 0}
-  - Position: {x: 0.80244255, y: 0, z: -1.950192}
-    Scale: 1.1948035
-    Material: {fileID: 0}
-  - Position: {x: -4.799738, y: 0, z: 2.0845652}
-    Scale: 1.3554242
-    Material: {fileID: 0}
-  - Position: {x: -4.539469, y: 0, z: 0.28838825}
-    Scale: 1.3412237
-    Material: {fileID: 0}
-  - Position: {x: 1.8591045, y: 0, z: -2.3799853}
-    Scale: 1.2276795
-    Material: {fileID: 0}
-  - Position: {x: -1.9175296, y: 0, z: -4.381321}
-    Scale: 0.840726
-    Material: {fileID: 0}
-  - Position: {x: 3.7006626, y: 0, z: -1.0412579}
-    Scale: 0.60592103
-    Material: {fileID: 0}
-  - Position: {x: 1.2553251, y: 0, z: -3.4399548}
-    Scale: 0.86180043
-    Material: {fileID: 0}
-  - Position: {x: -1.1153369, y: 0, z: -4.688319}
-    Scale: 0.30003995
-    Material: {fileID: 0}
-  - Position: {x: 4.1012497, y: 0, z: -0.8426256}
-    Scale: 0.6104198
-    Material: {fileID: 0}
-  - Position: {x: -0.18014622, y: 0, z: 0.781476}
-    Scale: 0.3721916
-    Material: {fileID: 0}
-  - Position: {x: -1.2997227, y: 0, z: -3.684578}
-    Scale: 0.5644234
-    Material: {fileID: 0}
-  - Position: {x: 1.5253519, y: 0, z: 4.492546}
-    Scale: 1.1622106
-    Material: {fileID: 0}
-  - Position: {x: -2.6740942, y: 0, z: -3.9783955}
-    Scale: 0.88936883
-    Material: {fileID: 0}
-  - Position: {x: -1.5407796, y: 0, z: 4.688307}
-    Scale: 1.9343687
-    Material: {fileID: 0}
-  - Position: {x: 2.2516274, y: 0, z: -2.1531982}
-    Scale: 1.1521858
-    Material: {fileID: 0}
-  - Position: {x: -1.0089226, y: 0, z: 2.0393143}
-    Scale: 1.8023368
-    Material: {fileID: 0}
-  - Position: {x: -0.102116585, y: 0, z: -0.50208855}
-    Scale: 1.2041657
-    Material: {fileID: 0}
-  - Position: {x: -2.5530062, y: 0, z: 0.6901269}
-    Scale: 0.7545653
-    Material: {fileID: 0}
+  - Position: {x: -3.4810867, y: 0, z: 1.7896007}
+    Scale: 1.9984813
+    Scr: 0
+  - Position: {x: 1.1505337, y: 0, z: 3.8784742}
+    Scale: 0.40445793
+    Scr: 0
+  - Position: {x: -0.39092016, y: 0, z: 4.988551}
+    Scale: 0.86724186
+    Scr: 0
+  - Position: {x: 3.001995, y: 0, z: 4.4974566}
+    Scale: 1.9255408
+    Scr: 0
+  - Position: {x: 3.7357483, y: 0, z: -2.7101364}
+    Scale: 1.0947307
+    Scr: 0
+  - Position: {x: -4.5099964, y: 0, z: -4.725896}
+    Scale: 1.5823004
+    Scr: 0
+  - Position: {x: -2.7476096, y: 0, z: 2.3504055}
+    Scale: 1.7182848
+    Scr: 0
+  - Position: {x: 0.60293627, y: 0, z: 2.9545534}
+    Scale: 1.8011498
+    Scr: 0
+  - Position: {x: 0.84475946, y: 0, z: -3.7413683}
+    Scale: 1.4154673
+    Scr: 0
+  - Position: {x: -1.5686841, y: 0, z: -0.533164}
+    Scale: 1.6205667
+    Scr: 0
+  - Position: {x: 3.8991106, y: 0, z: -1.047358}
+    Scale: 0.52482367
+    Scr: 1
+  - Position: {x: 2.756803, y: 0, z: 3.7764606}
+    Scale: 0.34824014
+    Scr: 0
+  CubesToSpawn: 10

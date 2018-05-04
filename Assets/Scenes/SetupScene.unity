@@ -452,6 +452,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114809477243952866, guid: 400b9e430d810534fa2dbce0b303745d,
+        type: 2}
+      propertyPath: exceptionAdapterTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114809477243952866, guid: 400b9e430d810534fa2dbce0b303745d,
+        type: 2}
+      propertyPath: exceptionPropertyName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 400b9e430d810534fa2dbce0b303745d, type: 2}
   m_IsPrefabParent: 0

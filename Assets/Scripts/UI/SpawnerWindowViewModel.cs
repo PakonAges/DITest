@@ -10,7 +10,32 @@ public class SpawnerWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
     CubesManager _spawner;
     SceneLoader _loader;
+    Saveloader _saveLoader;
+
+    int _cubesNumber = 0;
     string _cubesAmountTxt = "";
+
+
+    [Inject]
+    public void Construct(CubesManager spawner, SceneLoader sceneLoader, Saveloader saveloader)
+    {
+        _spawner = spawner;
+        _loader = sceneLoader;
+        _saveLoader = saveloader;
+    }
+
+    public int CubesNumber {
+        get {
+            return _cubesNumber;
+        }
+
+        set {
+            _cubesNumber = value;
+            CubesAmountTxt = value.ToString();
+
+            OnPropertyChanged("CubesAmountTxt");
+        }
+    }
 
     [Binding]
     public string CubesAmountTxt {
@@ -24,35 +49,36 @@ public class SpawnerWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
         }
     }
 
+
     void Start() {
-        CubesAmountTxt = _spawner.GetCubesAmount().ToString();
+        _spawner.RestoreCubes();
+        CubesNumber = _spawner.GetCurentCubesAmount();
     }
 
-    [Inject]
-    public void Construct(CubesManager spawner, SceneLoader sceneLoader)
-    {
-        _spawner = spawner;
-        _loader = sceneLoader;
-    }
 
     [Binding]
 	public void SpawnCube() {
         _spawner.SpawnCube(SpawnSource.UI);
+        CubesNumber++;
     }
 
     [Binding]
     public void LoadFirstScene() {
+        _spawner.ResetLocalCubeData();
         _loader.LoadFirstScene();
     }
 
     [Binding]
     public void LoadCubesFromSave() {
-        //To implement
+        _saveLoader.LoadProfile();
+        _spawner.RestoreCubes();
     }
 
     [Binding]
     public void ClearCubes() {
-        
+        _saveLoader.SaveProfile();
+        _spawner.ResetAllCubes();
+        CubesNumber = 0;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

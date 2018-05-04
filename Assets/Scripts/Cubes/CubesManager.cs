@@ -17,9 +17,11 @@ public class CubesManager : ITickable, IInitializable {
     }
 
     public void Initialize() {
-        if (_cubesList.Cubes.Count != 0) {
-            RestoreCubes();
-        }
+        spawnedCubesColletion = new List<Cube>();
+    }
+
+    public void ResetLocalCubeData() {
+        _cubesList.RemoveAllCubes();
     }
 
     public void ResetAllCubes() {
@@ -32,7 +34,11 @@ public class CubesManager : ITickable, IInitializable {
         }
     }
 
-    void RestoreCubes() {
+    public int GetCurentCubesAmount() {
+        return spawnedCubesColletion.Count;
+    }
+
+    public void RestoreCubes() {
         foreach (var cube in _cubesList.Cubes) {
             var newCube = _cubeFactory.Create();
             newCube.Position = cube.Position;
@@ -52,6 +58,8 @@ public class CubesManager : ITickable, IInitializable {
                 newCube.CubeMaterial = settings.InititalSpawnMaterial;
                 break;
             }
+
+            spawnedCubesColletion.Add(newCube);
         }
     }
 
@@ -82,7 +90,6 @@ public class CubesManager : ITickable, IInitializable {
             break;
         }
         
-
         _cubesList.AddCube(cube.Position, cube.Scale, src);
         spawnedCubesColletion.Add(cube);
     }

@@ -1,6 +1,23 @@
+namespace DITest.Save;
+
+union CubesCollection {CubeData}
+
+struct Vec3 {
+  x:float;
+  y:float;
+  z:float;
+}
+
 table PlayerData {
 	sessions:short = 0;
 	date:string;
+	cubes:[CubeData];
+}
+
+table CubeData {
+	position:Vec3;
+	scale:float;
+	scr:short;
 }
 
 root_type PlayerData;
