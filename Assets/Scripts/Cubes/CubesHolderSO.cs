@@ -20,6 +20,11 @@ public class CubesHolderSO : ScriptableObject {
         }
     }
 
+    public void ResetAll() {
+        CubesToSpawn = 0;
+        RemoveAllCubes();
+    }
+
     public void RemoveAllCubes() {
         if (Cubes.Count != 0) {
             Cubes.Clear();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,11 +8,7 @@ public class CubesManager : ITickable, IInitializable {
     Cube.Factory _cubeFactory;
     public Settings settings;
     CubesHolderSO _cubesList;
-
-    public int CubesToSpawn {
-        get { return _cubesList.CubesToSpawn; }
-        set { _cubesList.CubesToSpawn = value; }
-    }
+    List<Cube> spawnedCubesColletion;
 
     public CubesManager(Cube.Factory cubeFactory, Settings settings, CubesHolderSO cubesHolder) {
         _cubeFactory = cubeFactory;
@@ -25,13 +22,14 @@ public class CubesManager : ITickable, IInitializable {
         }
     }
 
-    public int GetCubesAmount() {
-        return _cubesList.Cubes.Count;
-    }
-
     public void ResetAllCubes() {
-        _cubesList.RemoveAllCubes();
-        _cubesList.CubesToSpawn = 0;
+        _cubesList.ResetAll();
+
+        if (spawnedCubesColletion.Count != 0) {
+            foreach (var cube in spawnedCubesColletion) {
+                GameObject.Destroy(cube.gameObject);
+            }
+        }
     }
 
     void RestoreCubes() {
@@ -86,6 +84,7 @@ public class CubesManager : ITickable, IInitializable {
         
 
         _cubesList.AddCube(cube.Position, cube.Scale, src);
+        spawnedCubesColletion.Add(cube);
     }
 
     Vector3 RandomPosition() {

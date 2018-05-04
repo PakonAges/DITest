@@ -16,20 +16,20 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     SceneLoader _sceneLoader;
     Player _player;
     Saveloader _saveLoader;
-    CubesManager _cubesManager;
+    CubesHolderSO _cubesCollection;
 
     [Inject]
-    public void Construct(SceneLoader loader, Player player, Saveloader saveloader, CubesManager cubesManager) {
+    public void Construct(SceneLoader loader, Player player, Saveloader saveloader, CubesHolderSO cubesCollection) {
         _sceneLoader = loader;
         _player = player;
         _saveLoader = saveloader;
-        _cubesManager = cubesManager;
+        _cubesCollection = cubesCollection;
     }
 
     void Start() {
         SessionsCounter = _player.TotalSessions.ToString();
         SaveDate = _player.SaveDate;
-        CubesAmount = _cubesManager.CubesToSpawn;
+        CubesAmount = _cubesCollection.CubesToSpawn;
     }
 
     [Binding]
@@ -74,7 +74,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
             }
             else {
                 cubesAmount = value;
-                _cubesManager.CubesToSpawn = value;
+                _cubesCollection.CubesToSpawn = value;
                 CubesToSpawnTxt = value.ToString();
                 OnPropertyChanged("CubesAmount");
             }
@@ -132,8 +132,15 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     }
 
     [Binding]
-    public void ResetProfile() {
+    public void ResetAllSaveData() {
+        _cubesCollection.ResetAll();
         _saveLoader.ResetProfile();
+        AppStop();
+    }
+
+    [Binding]
+    public void ResetLocal() {
+        _cubesCollection.ResetAll();
         AppStop();
     }
 
