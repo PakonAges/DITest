@@ -10,7 +10,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     string _saveDate = "";
 
     string _cubesToSpawnTxt = "";
-    int cubesAmount;
+    int cubesAmount = 0;
     bool cubesCounterValid = true;
 
     SceneLoader _sceneLoader;
@@ -29,7 +29,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     void Start() {
         SessionsCounter = _player.TotalSessions.ToString();
         SaveDate = _player.SaveDate;
-        CubesAmount = _cubesCollection.CubesToSpawn;
+        CubesAmount = Mathf.CeilToInt(_cubesCollection.CubesToSpawn);
     }
 
     [Binding]
@@ -63,7 +63,7 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
     }
 
     [Binding]
-    public int CubesAmount {
+    public float CubesAmount {
         get {
             return cubesAmount;
         }
@@ -73,8 +73,8 @@ public class SetupWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
                 return;
             }
             else {
-                cubesAmount = value;
-                _cubesCollection.CubesToSpawn = value;
+                cubesAmount = Mathf.CeilToInt(value);
+                _cubesCollection.CubesToSpawn = Mathf.CeilToInt(value);
                 CubesToSpawnTxt = value.ToString();
                 OnPropertyChanged("CubesAmount");
             }

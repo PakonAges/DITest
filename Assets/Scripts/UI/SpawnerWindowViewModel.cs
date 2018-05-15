@@ -51,7 +51,6 @@ public class SpawnerWindowViewModel : MonoBehaviour, INotifyPropertyChanged {
 
 
     void Start() {
-        _spawner.RestoreCubes();
         CubesNumber = _spawner.GetCurentCubesAmount();
     }
 
